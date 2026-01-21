@@ -62,14 +62,13 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 
 <p align="center">
   <img width="48%" src="https://github-readme-stats.vercel.app/api?username=AbhayKTS&show_icons=true&theme=tokyonight&title_color=ff2e2e&icon_color=ff2e2e&text_color=c7c7c7&bg_color=00000000&border_color=ff2e2e&border_radius=10" />
-  <img width="48%" src="https://github-readme-streak-stats.herokuapp.com?user=AbhayKTS&theme=tokyonight-duo&ring=ff2e2e&fire=ff2e2e&border=ff2e2e" />
 </p>
 
 ---
 
 # 🩸 **Contribution Streak — Flame of Persistence**
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=AbhayKTS&theme=dark&hide_border=true&background=000000&stroke=ff2e2e&ring=ff2e2e&fire=ff2e2e&currStreakNum=ffd700&sideNums=ff2e2e&currStreakLabel=ffd700&sideLabels=ff2e2e&dates=ffffff" />
+  <img width="48%" src="https://github-readme-streak-stats.herokuapp.com?user=AbhayKTS&theme=tokyonight-duo&ring=ff2e2e&fire=ff2e2e&border=ff2e2e" />
 </p><br>
 
 ---
