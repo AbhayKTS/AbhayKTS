@@ -74,8 +74,8 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 ---
 
 # 🐍 **Snake of the Abyss Devouring Your Code Path**
-<p align="center">
-  <img src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/output/github-contribution-grid-snake-dark.svg" />
+<p align="center">buti
+  <img src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/output/github-contribution-grid-snake-dark.svg?palette=github-dark" />
 </p>
 
 ---
