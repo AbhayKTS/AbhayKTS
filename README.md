@@ -2,6 +2,11 @@
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?size=40&duration=3500&pause=700&color=FF2E2E&center=true&vCenter=true&width=900&lines=⚔️+CHAOS_IMMORTAL+⚔️;Abhay+Kumar;Dragon+Knight+of+Code;Born+from+Chaos+%7C+Forged+in+Logic;Walking+Between+Magic+and+Machines" />
 </p>
+<p align="center">
+  <img width="60%" src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg?sanitize=true" style="opacity:0;">
+</p>
+
+<hr style="height:2px;border:none;background:linear-gradient(90deg,#ff0000,#550000,#ff0000);margin-top:-40px;">
 
 <!-- DARK KING MODE CUSTOM BANNER (Dragon Eyes + World Tree + Sword) -->
 <p align="center">
@@ -19,6 +24,11 @@ Guided by the **Dragon of Evolution**, protected by the **World Tree of Eternity
 I carve my path through the digital realms — blade in one hand, code in the other.
 
 ---
+<p align="center">
+  <img width="60%" src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg?sanitize=true" style="opacity:0;">
+</p>
+
+<hr style="height:2px;border:none;background:linear-gradient(90deg,#ff0000,#550000,#ff0000);margin-top:-40px;">
 
 # 🔥 **Skills of the Dragon Knight**
 
@@ -56,6 +66,11 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 ![Learning](https://img.shields.io/badge/Always%20Learning-16A34A?style=for-the-badge&logo=bookstack&logoColor=white)
 
 ---
+<p align="center">
+  <img width="60%" src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg?sanitize=true" style="opacity:0;">
+</p>
+
+<hr style="height:2px;border:none;background:linear-gradient(90deg,#ff0000,#550000,#ff0000);margin-top:-40px;">
 
 # 🩸 **Shadow Blade GitHub Stats (Black × Red)**
 
@@ -69,7 +84,7 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 # 🩸 **Contribution Streak — Flame of Persistence**
 <p align="center">
   <img src="https://streak-stats.demolab.com?user=AbhayKTS&theme=dark&hide_border=true&background=000000&stroke=ff2e2e&ring=ff2e2e&fire=ff2e2e&currStreakNum=ffd700&sideNums=ff2e2e&currStreakLabel=ffd700&sideLabels=ff2e2e&dates=ffffff" />
-</p>
+</p><br>
 
 ---
 
@@ -79,6 +94,11 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 </p>
 
 ---
+<p align="center">
+  <img width="60%" src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg?sanitize=true" style="opacity:0;">
+</p>
+
+<hr style="height:2px;border:none;background:linear-gradient(90deg,#ff0000,#550000,#ff0000);margin-top:-40px;">
 
 # 🐍 **Snake of the Abyss Devouring Your Code Path**
 <p align="center">
@@ -86,6 +106,11 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 </p>
 
 ---
+<p align="center">
+  <img width="60%" src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg?sanitize=true" style="opacity:0;">
+</p>
+
+<hr style="height:2px;border:none;background:linear-gradient(90deg,#ff0000,#550000,#ff0000);margin-top:-40px;">
 
 # 👑 **Farewell Message**
 <p align="center">
