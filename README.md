@@ -68,8 +68,9 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 
 # 🩸 **Contribution Streak — Flame of Persistence**
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=AbhayKTS&theme=tokyonight&ring=ff2e2e&fire=ff2e2e&currStreakNum=ffd700&sideNums=ff2e2e&currStreakLabel=ff2e2e&hide_border=true" />
+  <img src="https://github-readme-streak-stats-eight.vercel.app?user=AbhayKTS&theme=dark&hide_border=true&background=000000&stroke=ff2e2e&ring=ff2e2e&fire=ff2e2e&currStreakNum=ffd700&sideNums=ff2e2e&currStreakLabel=ffd700&sideLabels=ff2e2e&dates=ffffff" />
 </p>
+
 
 ---
 
