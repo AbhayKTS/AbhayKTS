@@ -2,7 +2,7 @@ name: Generate Stats
 
 on:
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: "0 */12 * * *"   # Every 12 hours
   workflow_dispatch:
 
 jobs:
@@ -23,12 +23,15 @@ jobs:
           npm install axios chart.js canvas
 
       - name: Generate Stats Image
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           node generate-stats.js
-          
+
       - name: Commit Stats
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
           git add stats.png || true
-          git commit -m "Update stats"
+          git commit -m "Update stats" || true
+          git push || true
