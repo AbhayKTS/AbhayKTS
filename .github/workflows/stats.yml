@@ -2,7 +2,7 @@ name: Generate Stats
 
 on:
   schedule:
-    - cron: "0 */12 * * *"   # Every 12 hours
+    - cron: "0 */12 * * *"   # runs every 12 hours
   workflow_dispatch:
 
 jobs:
@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: 18
 
       - name: Install dependencies
         run: |
-          npm install axios chart.js canvas
+          npm install axios canvas
 
       - name: Generate Stats Image
         env:
@@ -28,10 +28,10 @@ jobs:
         run: |
           node generate-stats.js
 
-      - name: Commit Stats
+      - name: Commit and push stats
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
           git add stats.png || true
-          git commit -m "Update stats" || true
-          git push || true
+          git commit -m "Update stats image" || true
+          git push origin main || true
