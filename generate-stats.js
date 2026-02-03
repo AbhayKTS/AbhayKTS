@@ -1,19 +1,15 @@
 const axios = require("axios");
-const { createCanvas, loadImage } = require("canvas");
+const { createCanvas } = require("canvas");
 const fs = require("fs");
 
 async function run() {
   const query = `
     query {
       user(login: "AbhayKTS") {
-        name
         contributionsCollection {
           contributionCalendar {
             totalContributions
           }
-        }
-        repositories {
-          totalCount
         }
       }
     }
@@ -22,47 +18,52 @@ async function run() {
   const res = await axios.post(
     "https://api.github.com/graphql",
     { query },
-    {
-      headers: {
-        Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-      },
-    }
+    { headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` } }
   );
 
-  const user = res.data.data.user;
-  const total = user.contributionsCollection.contributionCalendar.totalContributions;
+  const total = res.data.data.user.contributionsCollection.contributionCalendar.totalContributions;
 
-  // Canvas setup
-  const width = 1400;
-  const height = 400;
+  // Canvas size
+  const width = 1300;
+  const height = 350;
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
 
-  // === BACKGROUND (Dark King Black) ===
-  ctx.fillStyle = "#0a0a0a";  // pure dark background
+  // === Outer Background (Dark King) ===
+  ctx.fillStyle = "#0a0a0a";
   ctx.fillRect(0, 0, width, height);
 
-  // === BLOOD RED BORDER ===
+  // === Glowing Blood Red Border ===
+  ctx.shadowColor = "#ff2e2e";
+  ctx.shadowBlur = 25;
   ctx.strokeStyle = "#ff2e2e";
-  ctx.lineWidth = 8;
-  ctx.roundRect(20, 20, width - 40, height - 40, 25);
+  ctx.lineWidth = 6;
+  ctx.strokeRect(25, 25, width - 50, height - 50);
+
+  // === Title ===
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = "#ff2e2e";
+  ctx.font = "bold 48px Sans-serif";
+  ctx.fillText("Shadow Blade GitHub Stats", 60, 120);
+
+  // === Horizontal Divider ===
+  ctx.strokeStyle = "#ff2e2e";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(60, 140);
+  ctx.lineTo(width - 60, 140);
   ctx.stroke();
 
-  // === TITLE ===
-  ctx.fillStyle = "#ff2e2e";
-  ctx.font = "bold 50px Sans-serif";
-  ctx.fillText("CHAOS IMMORTAL — SHADOW BLADE STATS", 50, 100);
-
-  // === SUBTEXT (anime hacker style) ===
+  // === Subtext ===
   ctx.fillStyle = "#c7c7c7";
-  ctx.font = "28px Sans-serif";
-  ctx.fillText(`Total Contributions: ${total}`, 50, 180);
+  ctx.font = "32px Sans-serif";
+  ctx.fillText(`Total Contributions:`, 60, 210);
 
-  ctx.fillStyle = "#999";
-  ctx.font = "24px Sans-serif";
-  ctx.fillText("Powered by GitHub GraphQL — Rendered by Chaos Engine", 50, 300);
+  // === Big Red Number ===
+  ctx.fillStyle = "#ff2e2e";
+  ctx.font = "bold 70px Sans-serif";
+  ctx.fillText(`${total}`, 460, 215);
 
-  // Save output
   fs.writeFileSync("stats.png", canvas.toBuffer("image/png"));
 }
 
