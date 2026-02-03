@@ -61,7 +61,7 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 # 🩸 **Shadow Blade GitHub Stats**
 
 <p align="center">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=AbhayKTS&show_icons=true&theme=tokyonight&title_color=ff2e2e&icon_color=ff2e2e&text_color=c7c7c7&bg_color=00000000&border_color=ff2e2e&border_radius=10" />
+  <img width="48%" src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=AbhayKTS&show_icons=true&theme=tokyonight&title_color=ff2e2e&icon_color=ff2e2e&text_color=c7c7c7&bg_color=00000000&border_color=ff2e2e&border_radius=10"/>
 </p>
 
 ---
