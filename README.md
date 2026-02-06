@@ -61,16 +61,7 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 # 🩸 **Shadow Blade GitHub Stats**
 
 <p align="center">
-  <img width="80%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/stats.png"/>
-</p>
-
-
-
----
-
-# 🩸 **Contribution Streak — Flame of Persistence**
-<p align="center">
-  <img src="https://github-readme-streak-stats-eight.vercel.app?user=AbhayKTS&theme=dark&hide_border=true&background=000000&stroke=ff2e2e&ring=ff2e2e&fire=ff2e2e&currStreakNum=ffd700&sideNums=ff2e2e&currStreakLabel=ffd700&sideLabels=ff2e2e&dates=ffffff" />
+  <img width="90%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/stats.png?update=99" />
 </p>
 
 
