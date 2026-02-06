@@ -6,14 +6,14 @@ async function run() {
   const username = "AbhayKTS";
   const token = process.env.GITHUB_TOKEN;
 
-  // Step 1: Get contribution years and repos
+  // Step 1: Get contribution years and ALL repos (public)
   const initQuery = `
     query {
       user(login: "${username}") {
         contributionsCollection {
           contributionYears
         }
-        repositories(first: 100, ownerAffiliations: OWNER) {
+        repositories(first: 100, privacy: PUBLIC) {
           totalCount
           nodes {
             stargazerCount
@@ -77,33 +77,6 @@ async function run() {
     totalIssuesAllTime += cc.totalIssueContributions;
   }
 
-  // Step 3: Last year (trailing 365 days)
-  const now = new Date();
-  const lastYearFrom = new Date(now.getTime() - 364 * 24 * 60 * 60 * 1000).toISOString();
-  const lastYearTo = now.toISOString();
-
-  const lastYearQuery = `
-    query {
-      user(login: "${username}") {
-        contributionsCollection(from: "${lastYearFrom}", to: "${lastYearTo}") {
-          contributionCalendar {
-            totalContributions
-          }
-          totalCommitContributions
-        }
-      }
-    }
-  `;
-
-  const lastYearRes = await axios.post(
-    "https://api.github.com/graphql",
-    { query: lastYearQuery },
-    { headers: { Authorization: `bearer ${token}` } }
-  );
-
-  const lastYearContributions = lastYearRes.data.data.user.contributionsCollection.contributionCalendar.totalContributions;
-  const lastYearCommits = lastYearRes.data.data.user.contributionsCollection.totalCommitContributions;
-
   // Power Level calculation
   const powerLevel = (totalContributionsAllTime + totalCommitsAllTime) * 6;
   const maxPower = 5000;
@@ -111,7 +84,7 @@ async function run() {
 
   // Canvas Drawing
   const width = 900;
-  const height = 620;
+  const height = 520;
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
 
@@ -141,13 +114,11 @@ async function run() {
   const startX = 50;
   const valueX = 420;
   const startY = 130;
-  const gap = 48;
+  const gap = 50;
 
   const stats = [
     { label: "Total Contributions:", value: totalContributionsAllTime },
-    { label: "Last Year Contributions:", value: lastYearContributions },
     { label: "Total Commits:", value: totalCommitsAllTime },
-    { label: "Last Year Commits:", value: lastYearCommits },
     { label: "Pull Requests:", value: totalPRsAllTime },
     { label: "Issues Opened:", value: totalIssuesAllTime },
     { label: "Stars Received:", value: totalStars },
@@ -167,11 +138,11 @@ async function run() {
   // Power Level title
   ctx.fillStyle = "#ff2e2e";
   ctx.font = "bold 32px Sans-serif";
-  ctx.fillText("Power Level", startX, startY + gap * 8 + 20);
+  ctx.fillText("Power Level", startX, startY + gap * 6 + 20);
 
   // Power bar
   const barX = startX;
-  const barY = startY + gap * 8 + 45;
+  const barY = startY + gap * 6 + 45;
   const barWidth = width - startX * 2 - 100;
   const barHeight = 40;
 
@@ -194,10 +165,8 @@ async function run() {
 
   fs.writeFileSync("stats.png", canvas.toBuffer("image/png"));
   console.log("stats.png generated!");
-  console.log("Total Contributions (all time):", totalContributionsAllTime);
-  console.log("Last Year Contributions:", lastYearContributions);
-  console.log("Total Commits (all time):", totalCommitsAllTime);
-  console.log("Last Year Commits:", lastYearCommits);
+  console.log("Total Contributions:", totalContributionsAllTime);
+  console.log("Total Commits:", totalCommitsAllTime);
   console.log("Stars:", totalStars);
   console.log("Repos:", totalRepos);
 }
