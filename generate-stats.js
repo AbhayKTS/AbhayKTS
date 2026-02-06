@@ -6,8 +6,8 @@ async function run() {
   const username = "AbhayKTS";
   const token = process.env.GITHUB_TOKEN;
 
-  // Step 1: Get contribution years
-  const yearsQuery = `
+  // Step 1: Get contribution years and repos
+  const initQuery = `
     query {
       user(login: "${username}") {
         contributionsCollection {
@@ -23,13 +23,13 @@ async function run() {
     }
   `;
 
-  const yearsRes = await axios.post(
+  const initRes = await axios.post(
     "https://api.github.com/graphql",
-    { query: yearsQuery },
+    { query: initQuery },
     { headers: { Authorization: `bearer ${token}` } }
   );
 
-  const user = yearsRes.data.data.user;
+  const user = initRes.data.data.user;
   const years = user.contributionsCollection.contributionYears;
   const totalRepos = user.repositories.totalCount;
   const totalStars = user.repositories.nodes.reduce((sum, repo) => sum + repo.stargazerCount, 0);
@@ -136,7 +136,6 @@ async function run() {
   ctx.fillText(title, (width - titleWidth) / 2, 70);
 
   // Stats
-  ctx.fillStyle = "#d0d0d0";
   ctx.font = "28px Sans-serif";
 
   const startX = 50;
@@ -195,6 +194,12 @@ async function run() {
 
   fs.writeFileSync("stats.png", canvas.toBuffer("image/png"));
   console.log("stats.png generated!");
+  console.log("Total Contributions (all time):", totalContributionsAllTime);
+  console.log("Last Year Contributions:", lastYearContributions);
+  console.log("Total Commits (all time):", totalCommitsAllTime);
+  console.log("Last Year Commits:", lastYearCommits);
+  console.log("Stars:", totalStars);
+  console.log("Repos:", totalRepos);
 }
 
 run().catch(err => {
