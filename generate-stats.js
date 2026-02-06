@@ -6,17 +6,30 @@ async function run() {
   const username = "AbhayKTS";
   const token = process.env.GITHUB_TOKEN;
 
-  // Step 1: Get contribution years and ALL repos (public)
+  // Get contribution years, repos, and commit counts from all repos
   const initQuery = `
     query {
       user(login: "${username}") {
         contributionsCollection {
           contributionYears
+          contributionCalendar {
+            totalContributions
+          }
         }
-        repositories(first: 100, privacy: PUBLIC) {
+        repositories(first: 100, privacy: PUBLIC, ownerAffiliations: OWNER) {
           totalCount
           nodes {
+            name
             stargazerCount
+            defaultBranchRef {
+              target {
+                ... on Commit {
+                  history {
+                    totalCount
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -32,11 +45,20 @@ async function run() {
   const user = initRes.data.data.user;
   const years = user.contributionsCollection.contributionYears;
   const totalRepos = user.repositories.totalCount;
+  
+  // Calculate total stars from all repos
   const totalStars = user.repositories.nodes.reduce((sum, repo) => sum + repo.stargazerCount, 0);
+  
+  // Calculate total commits from all repos (actual commit count)
+  let totalCommitsFromRepos = 0;
+  for (const repo of user.repositories.nodes) {
+    if (repo.defaultBranchRef && repo.defaultBranchRef.target && repo.defaultBranchRef.target.history) {
+      totalCommitsFromRepos += repo.defaultBranchRef.target.history.totalCount;
+    }
+  }
 
-  // Step 2: Fetch ALL years for lifetime totals
+  // Fetch ALL years for lifetime contribution totals
   let totalContributionsAllTime = 0;
-  let totalCommitsAllTime = 0;
   let totalPRsAllTime = 0;
   let totalIssuesAllTime = 0;
 
@@ -56,7 +78,6 @@ async function run() {
             contributionCalendar {
               totalContributions
             }
-            totalCommitContributions
             totalPullRequestContributions
             totalIssueContributions
           }
@@ -72,19 +93,13 @@ async function run() {
 
     const cc = yearRes.data.data.user.contributionsCollection;
     totalContributionsAllTime += cc.contributionCalendar.totalContributions;
-    totalCommitsAllTime += cc.totalCommitContributions;
     totalPRsAllTime += cc.totalPullRequestContributions;
     totalIssuesAllTime += cc.totalIssueContributions;
   }
 
-  // Power Level calculation
-  const powerLevel = (totalContributionsAllTime + totalCommitsAllTime) * 6;
-  const maxPower = 5000;
-  const barFill = Math.min(powerLevel / maxPower, 1);
-
-  // Canvas Drawing
+  // Canvas Drawing - NO POWER LEVEL
   const width = 900;
-  const height = 520;
+  const height = 420;
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
 
@@ -112,13 +127,13 @@ async function run() {
   ctx.font = "28px Sans-serif";
 
   const startX = 50;
-  const valueX = 420;
+  const valueX = 450;
   const startY = 130;
   const gap = 50;
 
   const stats = [
     { label: "Total Contributions:", value: totalContributionsAllTime },
-    { label: "Total Commits:", value: totalCommitsAllTime },
+    { label: "Total Commits:", value: totalCommitsFromRepos },
     { label: "Pull Requests:", value: totalPRsAllTime },
     { label: "Issues Opened:", value: totalIssuesAllTime },
     { label: "Stars Received:", value: totalStars },
@@ -135,38 +150,10 @@ async function run() {
     ctx.font = "28px Sans-serif";
   });
 
-  // Power Level title
-  ctx.fillStyle = "#ff2e2e";
-  ctx.font = "bold 32px Sans-serif";
-  ctx.fillText("Power Level", startX, startY + gap * 6 + 20);
-
-  // Power bar
-  const barX = startX;
-  const barY = startY + gap * 6 + 45;
-  const barWidth = width - startX * 2 - 100;
-  const barHeight = 40;
-
-  ctx.strokeStyle = "#ff2e2e";
-  ctx.lineWidth = 3;
-  ctx.strokeRect(barX, barY, barWidth, barHeight);
-
-  const fillWidth = barWidth * barFill;
-  const gradient = ctx.createLinearGradient(barX, barY, barX + fillWidth, barY);
-  gradient.addColorStop(0, "#330000");
-  gradient.addColorStop(0.5, "#ff1e1e");
-  gradient.addColorStop(1, "#ff4d4d");
-
-  ctx.fillStyle = gradient;
-  ctx.fillRect(barX + 2, barY + 2, fillWidth - 4, barHeight - 4);
-
-  ctx.fillStyle = "#ff2e2e";
-  ctx.font = "bold 32px Sans-serif";
-  ctx.fillText(String(powerLevel), barX + barWidth + 15, barY + 30);
-
   fs.writeFileSync("stats.png", canvas.toBuffer("image/png"));
   console.log("stats.png generated!");
   console.log("Total Contributions:", totalContributionsAllTime);
-  console.log("Total Commits:", totalCommitsAllTime);
+  console.log("Total Commits (from repos):", totalCommitsFromRepos);
   console.log("Stars:", totalStars);
   console.log("Repos:", totalRepos);
 }
