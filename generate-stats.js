@@ -6,6 +6,7 @@ async function run() {
   const query = `
     query {
       user(login: "AbhayKTS") {
+        name
         contributionsCollection {
           contributionCalendar {
             totalContributions
@@ -32,7 +33,6 @@ async function run() {
 
   const user = res.data.data.user;
 
-  // Stats
   const totalContributions = user.contributionsCollection.contributionCalendar.totalContributions;
   const totalCommits = user.contributionsCollection.totalCommitContributions;
   const totalPRs = user.contributionsCollection.totalPullRequestContributions;
@@ -40,75 +40,73 @@ async function run() {
   const totalStars = user.starredRepositories.totalCount;
   const totalRepos = user.repositories.totalCount;
 
-  // === POWER LEVEL ===
-  const powerLevel = totalContributions * 8;  // dynamic anime-style formula
-  const maxPower = 3000; // bar max (can scale as you grow)
-  const barFill = Math.min(powerLevel / maxPower, 1); // cap at 100%
+  // Power Level
+  const powerLevel = (totalContributions + totalCommits) * 6; // anime scaling
+  const maxPower = 3000;
+  const barFill = Math.min(powerLevel / maxPower, 1);
 
   // Canvas
   const width = 1300;
-  const height = 550;
+  const height = 650;
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
 
   // Background
-  ctx.fillStyle = "#0a0a0a";
+  ctx.fillStyle = "#090909";
   ctx.fillRect(0, 0, width, height);
 
   // Outer neon border
   ctx.shadowColor = "#ff2e2e";
-  ctx.shadowBlur = 25;
+  ctx.shadowBlur = 30;
   ctx.strokeStyle = "#ff2e2e";
-  ctx.lineWidth = 6;
+  ctx.lineWidth = 7;
   ctx.strokeRect(25, 25, width - 50, height - 50);
-
   ctx.shadowBlur = 0;
 
   // Title
   ctx.fillStyle = "#ff2e2e";
-  ctx.font = "bold 50px Sans-serif";
-  ctx.fillText("Shadow Blade GitHub Stats", 60, 120);
+  ctx.font = "bold 55px Sans-serif";
+  ctx.fillText("Shadow Blade Status — S-Rank Developer", 60, 120);
 
   // Divider
   ctx.strokeStyle = "#ff2e2e";
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 3;
   ctx.beginPath();
   ctx.moveTo(60, 140);
   ctx.lineTo(width - 60, 140);
   ctx.stroke();
 
-  // === Stats ===
+  // Stats
   ctx.fillStyle = "#c7c7c7";
-  ctx.font = "32px Sans-serif";
+  ctx.font = "35px Sans-serif";
 
   const startY = 200;
   const gap = 60;
 
   ctx.fillText(`🔥 Total Contributions:     ${totalContributions}`, 60, startY);
-  ctx.fillText(`🖥️ Total Commits:           ${totalCommits}`, 60, startY + gap);
+  ctx.fillText(`🖥️ Real Total Commits:     ${totalCommits}`, 60, startY + gap);
   ctx.fillText(`⚔️ Pull Requests:           ${totalPRs}`, 60, startY + gap * 2);
   ctx.fillText(`🐞 Issues Opened:           ${totalIssues}`, 60, startY + gap * 3);
   ctx.fillText(`⭐ Stars Received:          ${totalStars}`, 60, startY + gap * 4);
   ctx.fillText(`📦 Public Repositories:     ${totalRepos}`, 60, startY + gap * 5);
 
-  // === POWER LEVEL BAR TITLE ===
+  // Power level title
   ctx.fillStyle = "#ff2e2e";
-  ctx.font = "bold 40px Sans-serif";
-  ctx.fillText("Power Level", 60, startY + gap * 6 + 50);
+  ctx.font = "bold 45px Sans-serif";
+  ctx.fillText("⚡ Power Level", 60, startY + gap * 6 + 40);
 
-  // === POWER BAR OUTLINE ===
+  // Power bar
   const barX = 60;
   const barY = startY + gap * 6 + 80;
   const barWidth = 1100;
-  const barHeight = 45;
+  const barHeight = 50;
 
   ctx.strokeStyle = "#ff2e2e";
   ctx.lineWidth = 4;
   ctx.strokeRect(barX, barY, barWidth, barHeight);
 
-  // === POWER BAR FILL ===
+  // Gradient fill
   const fillWidth = barWidth * barFill;
-
   const gradient = ctx.createLinearGradient(barX, barY, barX + fillWidth, barY);
   gradient.addColorStop(0, "#330000");
   gradient.addColorStop(0.5, "#ff1e1e");
@@ -117,12 +115,11 @@ async function run() {
   ctx.fillStyle = gradient;
   ctx.fillRect(barX, barY, fillWidth, barHeight);
 
-  // === POWER LEVEL NUMBER ===
+  // Power number
   ctx.fillStyle = "#ff2e2e";
-  ctx.font = "bold 38px Sans-serif";
-  ctx.fillText(`${powerLevel}`, barX + barWidth + 20, barY + 38);
+  ctx.font = "bold 40px Sans-serif";
+  ctx.fillText(`${powerLevel}`, barX + barWidth + 20, barY + 40);
 
-  // Save file
   fs.writeFileSync("stats.png", canvas.toBuffer("image/png"));
 }
 
