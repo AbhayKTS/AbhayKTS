@@ -1,13 +1,19 @@
-name: Generate Stats
+﻿name: Generate Stats
 
 on:
   schedule:
-    - cron: "0 */12 * * *"   # runs every 12 hours
+    - cron: "0 */6 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'generate-stats.js'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
@@ -19,19 +25,22 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: |
-          npm install axios canvas
+        run: npm install axios canvas
 
       - name: Generate Stats Image
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          node generate-stats.js
+        run: node generate-stats.js
 
-      - name: Commit and push stats
+      - name: Update README cache buster
+        run: |
+          TIMESTAMP=$(date +%s)
+          sed -i "s/stats\.png?v=[0-9]*/stats.png?v=$TIMESTAMP/g" README.md
+
+      - name: Commit and push
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          git add stats.png || true
-          git commit -m "Update stats image" || true
-          git push origin main || true
+          git add stats.png README.md
+          git diff --staged --quiet || git commit -m "Update stats [$(date +%Y-%m-%d)]"
+          git push origin main
