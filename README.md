@@ -61,7 +61,7 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 # 🩸 **Shadow Blade GitHub Stats**
 
 <p align="center">
-  <img width="90%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/stats.png?update=99" />
+  <img width="100%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/stats.png?update=99" />
 </p>
 
 
