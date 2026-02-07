@@ -6,82 +6,6 @@ async function run() {
   const username = "AbhayKTS";
   const token = process.env.GITHUB_TOKEN;
 
-  // Get contribution years and repos
-  const initQuery = `
-    query {
-      user(login: "${username}") {
-        contributionsCollection {
-          contributionYears
-          totalCommitContributions
-          totalPullRequestContributions
-          totalIssueContributions
-          restrictedContributionsCount
-        }
-        repositories(first: 100, ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER]) {
-          totalCount
-          nodes {
-            name
-            isPrivate
-            stargazerCount
-          }
-        }
-      }
-    }
-  `;
-
-  const initRes = await axios.post(
-    "https://api.github.com/graphql",
-    { query: initQuery },
-    { headers: { Authorization: `bearer ${token}` } }
-  );
-
-  const user = initRes.data.data.user;
-  const years = user.contributionsCollection.contributionYears;
-  const publicRepos = user.repositories.nodes.filter(r => !r.isPrivate).length;
-  const totalStars = user.repositories.nodes.reduce((sum, repo) => sum + repo.stargazerCount, 0);
-
-  // Fetch ALL years for lifetime contribution totals
-  let totalContributionsAllTime = 0;
-  let totalCommitsAllTime = 0;
-  let totalPRsAllTime = 0;
-  let totalIssuesAllTime = 0;
-
-  for (const year of years) {
-    const fromDt = `${year}-01-01T00:00:00Z`;
-    let toDt = `${year}-12-31T23:59:59Z`;
-    const now = new Date();
-    if (year === now.getFullYear()) {
-      toDt = now.toISOString();
-    }
-
-    const yearQuery = `
-      query {
-        user(login: "${username}") {
-          contributionsCollection(from: "${fromDt}", to: "${toDt}") {
-            contributionCalendar {
-              totalContributions
-            }
-            totalCommitContributions
-            totalPullRequestContributions
-            totalIssueContributions
-          }
-        }
-      }
-    `;
-
-    const yearRes = await axios.post(
-      "https://api.github.com/graphql",
-      { query: yearQuery },
-      { headers: { Authorization: `bearer ${token}` } }
-    );
-
-    const cc = yearRes.data.data.user.contributionsCollection;
-    totalContributionsAllTime += cc.contributionCalendar.totalContributions;
-    totalCommitsAllTime += cc.totalCommitContributions;
-    totalPRsAllTime += cc.totalPullRequestContributions;
-    totalIssuesAllTime += cc.totalIssueContributions;
-  }
-
   // Fetch last 31 days of contributions for the graph
   const now = new Date();
   const thirtyOneDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
@@ -129,56 +53,8 @@ async function run() {
   dailyData.sort((a, b) => new Date(a.date) - new Date(b.date));
   const last31Days = dailyData.slice(-31);
 
-  // ================== GENERATE STATS IMAGE ==================
-  const statsWidth = 900;
-  const statsHeight = 420;
-  const statsCanvas = createCanvas(statsWidth, statsHeight);
-  const statsCtx = statsCanvas.getContext("2d");
-
-  statsCtx.fillStyle = "#0d0d0d";
-  statsCtx.fillRect(0, 0, statsWidth, statsHeight);
-
-  const pad = 20;
-  statsCtx.shadowColor = "#ff2e2e";
-  statsCtx.shadowBlur = 20;
-  statsCtx.strokeStyle = "#ff2e2e";
-  statsCtx.lineWidth = 4;
-  statsCtx.strokeRect(pad, pad, statsWidth - pad * 2, statsHeight - pad * 2);
-  statsCtx.shadowBlur = 0;
-
-  statsCtx.fillStyle = "#ff2e2e";
-  statsCtx.font = "bold 36px Sans-serif";
-  const title = "Shadow Blade Status - S-Rank Developer";
-  const titleWidth = statsCtx.measureText(title).width;
-  statsCtx.fillText(title, (statsWidth - titleWidth) / 2, 70);
-
-  statsCtx.font = "28px Sans-serif";
-  const startX = 50;
-  const valueX = 450;
-  const startY = 130;
-  const gap = 50;
-
-  const stats = [
-    { label: "Total Contributions:", value: totalContributionsAllTime },
-    { label: "Total Commits:", value: totalCommitsAllTime },
-    { label: "Pull Requests:", value: totalPRsAllTime },
-    { label: "Issues Opened:", value: totalIssuesAllTime },
-    { label: "Stars Received:", value: totalStars },
-    { label: "Public Repositories:", value: publicRepos },
-  ];
-
-  stats.forEach((stat, i) => {
-    const y = startY + gap * i;
-    statsCtx.fillStyle = "#d0d0d0";
-    statsCtx.fillText(stat.label, startX, y);
-    statsCtx.fillStyle = "#ffffff";
-    statsCtx.font = "bold 28px Sans-serif";
-    statsCtx.fillText(String(stat.value), valueX, y);
-    statsCtx.font = "28px Sans-serif";
-  });
-
-  fs.writeFileSync("stats.png", statsCanvas.toBuffer("image/png"));
-  console.log("stats.png generated!");
+  console.log("Fetched contribution data:");
+  last31Days.forEach(d => console.log(`  ${d.date}: ${d.count}`));
 
   // ================== GENERATE CONTRIBUTION GRAPH ==================
   const graphWidth = 900;
@@ -302,7 +178,6 @@ async function run() {
 
   fs.writeFileSync("contribution-graph.png", graphCanvas.toBuffer("image/png"));
   console.log("contribution-graph.png generated!");
-  console.log("Last 31 days data:", last31Days.map(d => d.date + ": " + d.count).join(", "));
 }
 
 run().catch(err => {

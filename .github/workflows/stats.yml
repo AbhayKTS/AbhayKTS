@@ -1,4 +1,4 @@
-﻿name: Generate Stats
+name: Generate Stats
 
 on:
   schedule:
@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: npm install axios canvas
 
-      - name: Generate Stats Image
+      - name: Generate Contribution Graph
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node generate-stats.js
@@ -35,13 +35,12 @@ jobs:
       - name: Update README cache buster
         run: |
           TIMESTAMP=$(date +%s)
-          sed -i "s/stats\.png?v=[0-9]*/stats.png?v=$TIMESTAMP/g" README.md
           sed -i "s/contribution-graph\.png?v=[0-9]*/contribution-graph.png?v=$TIMESTAMP/g" README.md
 
       - name: Commit and push
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          git add stats.png contribution-graph.png README.md
-          git diff --staged --quiet || git commit -m "Update stats [$(date +%Y-%m-%d)]"
+          git add contribution-graph.png README.md
+          git diff --staged --quiet || git commit -m "Update contribution graph [$(date +%Y-%m-%d)]"
           git push origin main
