@@ -6,12 +6,14 @@ async function run() {
   const username = "AbhayKTS";
   const token = process.env.GITHUB_TOKEN;
 
-  // Fetch last 31 days of contributions for the graph
+  // Fetch last 31 days of contributions for the graph (INCLUDING PRIVATE REPOS)
   const now = new Date();
   const thirtyOneDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
   const fromDate = thirtyOneDaysAgo.toISOString();
   const toDate = now.toISOString();
 
+  // Note: The GitHub token must have 'repo' scope to see private contributions
+  // Also need to check if user has "Include private contributions" enabled in GitHub settings
   const calendarQuery = `
     query {
       user(login: "${username}") {
@@ -25,6 +27,9 @@ async function run() {
               }
             }
           }
+          restrictedContributionsCount
+          totalCommitContributions
+          totalRepositoryContributions
         }
       }
     }
@@ -36,7 +41,13 @@ async function run() {
     { headers: { Authorization: `bearer ${token}` } }
   );
 
-  const calendar = calendarRes.data.data.user.contributionsCollection.contributionCalendar;
+  const collection = calendarRes.data.data.user.contributionsCollection;
+  const calendar = collection.contributionCalendar;
+  const restrictedCount = collection.restrictedContributionsCount;
+  
+  console.log("Total contributions in calendar:", calendar.totalContributions);
+  console.log("Restricted (private) contributions:", restrictedCount);
+  console.log("Total commit contributions:", collection.totalCommitContributions);
 
   // Extract daily contributions
   const dailyData = [];
@@ -53,7 +64,7 @@ async function run() {
   dailyData.sort((a, b) => new Date(a.date) - new Date(b.date));
   const last31Days = dailyData.slice(-31);
 
-  console.log("Fetched contribution data:");
+  console.log("\nFetched contribution data (last 31 days):");
   last31Days.forEach(d => console.log(`  ${d.date}: ${d.count}`));
 
   // ================== GENERATE CONTRIBUTION GRAPH ==================
@@ -177,7 +188,7 @@ async function run() {
   ctx.fillText("Days", graphWidth / 2 - 15, graphHeight - 20);
 
   fs.writeFileSync("contribution-graph.png", graphCanvas.toBuffer("image/png"));
-  console.log("contribution-graph.png generated!");
+  console.log("\ncontribution-graph.png generated!");
 }
 
 run().catch(err => {
