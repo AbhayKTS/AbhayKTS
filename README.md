@@ -58,13 +58,6 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 
 ---
 
-# 🩸 **Shadow Blade GitHub Stats**
-
-<p align="center">
-  <img width="100%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/stats.png?v=1770452719" />
-</p>
-
-
 ---
 
 # 🩸 **Contribution Graph – Bloodline of Code**
