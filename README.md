@@ -69,7 +69,7 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 
 # 🩸 **Contribution Graph – Bloodline of Code**
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=AbhayKTS&bg_color=0d0d0d&color=ff2e2e&line=ff2e2e&point=ffffff&area=true&hide_border=true" />
+  <img src="https://https://github-readme-activity-graph.vercel.app/graph?username=AbhayKTS&bg_color=0d0d0d&color=ff2e2e&line=ff2e2e&point=ffffff&area=true&hide_border=true&v=2" />
 </p>
 
 ---
