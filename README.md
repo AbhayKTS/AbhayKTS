@@ -1,7 +1,6 @@
-<!-- CHAOS IMMORTAL – DARK KING MODE HEADER -->
+<!-- CHAOS IMMORTAL � DARK KING MODE HEADER -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?size=40&duration=3500&pause=700&color=FF2E2E&center=true&vCenter=true&width=900&lines=⚔️+CHAOS_IMMORTAL+⚔️;Abhay+Kumar;Dragon+Knight+of+Code;Born+from+Chaos+%7C+Forged+in+Logic;Walking+Between+Magic+and+Machines" />
-
+  <img src="https://readme-typing-svg.herokuapp.com?size=40&duration=3500&pause=700&color=FF2E2E&center=true&vCenter=true&width=900&lines=%E2%9A%94%EF%B8%8F+CHAOS_IMMORTAL+%E2%9A%94%EF%B8%8F;Abhay+Kumar;Dragon+Knight+of+Code;Born+from+Chaos+%7C+Forged+in+Logic;Walking+Between+Magic+and+Machines" />
 
 <!-- DARK KING MODE CUSTOM BANNER (Dragon Eyes + World Tree + Sword) -->
 <p align="center">
@@ -10,18 +9,18 @@
 
 ---
 
-# 🩸 **The Chaos Immortal**
+# ?? **The Chaos Immortal**
 *A dragon knight learning and evolving every day, breaking limits beyond imagination.*
 
-Forged in the void where **ancient runes meet modern algorithms**,  
-I walk between **magic and machines**, mastering both as weapons.  
-Guided by the **Dragon of Evolution**, protected by the **World Tree of Eternity**,  
-I carve my path through the digital realms — blade in one hand, code in the other.
+Forged in the void where **ancient runes meet modern algorithms**,
+I walk between **magic and machines**, mastering both as weapons.
+Guided by the **Dragon of Evolution**, protected by the **World Tree of Eternity**,
+I carve my path through the digital realms � blade in one hand, code in the other.
 
 ---
 
 
-# 🔥 **Skills of the Dragon Knight**
+# ?? **Skills of the Dragon Knight**
 
 ### **Languages**
 ![Java](https://img.shields.io/badge/Java-ED1D25?style=for-the-badge&logo=java&logoColor=white)
@@ -58,18 +57,23 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 
 ---
 
-# 🩸 **Contribution Graph – Bloodline of Code**
-<img 
-  src="https://github-readme-activity-graph.vercel.app/graph?username=AbhayKTS&bg_color=000000&color=ff2b2b&line=ff2b2b&point=b30000&area=true&hide_border=true"
-  width="100%" 
-  alt="activity graph"
-/>
+# ?? **Shadow Blade GitHub Stats**
+
+<p align="center">
+  <img width="100%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/stats.png?v=1" />
+</p>
 
 ---
 
+# ?? **Contribution Graph � Bloodline of Code**
 
+<p align="center">
+  <img width="100%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/contribution-graph.png?v=1" />
+</p>
 
-# 🐍 **Snake of the Abyss Devouring Your Code Path**
+---
+
+# ?? **Snake of the Abyss Devouring Your Code Path**
 <p align="center">
   <img src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/output/github-contribution-grid-snake-dark.svg" />
 </p>
@@ -77,8 +81,8 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 ---
 
 
-# 👑 **Farewell Message**
+# ?? **Farewell Message**
 <p align="center">
-  <i>“Power rises in silence. Growth blooms in darkness.”</i><br>
-  <b>— The Chaos Immortal</b>
+  <i>"Power rises in silence. Growth blooms in darkness."</i><br>
+  <b>� The Chaos Immortal</b>
 </p>
