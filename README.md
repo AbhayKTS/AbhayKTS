@@ -59,9 +59,11 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 ---
 
 # 🩸 **Contribution Graph – Bloodline of Code**
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=AbhayKTS&theme=dark&hide_border=true&fire=FF2E2E&ring=FF2E2E&currStreakLabel=FF2E2E" />
-</p>
+<img 
+  src="https://github-readme-activity-graph.vercel.app/graph?username=AbhayKTS&bg_color=000000&color=ff2b2b&line=ff2b2b&point=b30000&area=true&hide_border=true"
+  width="100%" 
+  alt="activity graph"
+/>
 
 ---
 
