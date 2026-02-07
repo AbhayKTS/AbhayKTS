@@ -60,7 +60,7 @@ I carve my path through the digital realms — blade in one hand, code in the othe
 # ?? **Shadow Blade GitHub Stats**
 
 <p align="center">
-  <img width="100%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/stats.png?v=1" />
+  <img width="100%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/stats.png?v=1770454290" />
 </p>
 
 ---
@@ -68,7 +68,7 @@ I carve my path through the digital realms — blade in one hand, code in the othe
 # ?? **Contribution Graph – Bloodline of Code**
 
 <p align="center">
-  <img width="100%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/contribution-graph.png?v=1" />
+  <img width="100%" src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/contribution-graph.png?v=1770454290" />
 </p>
 
 ---
