@@ -1,4 +1,4 @@
-﻿const axios = require("axios");
+const axios = require("axios");
 const { createCanvas } = require("canvas");
 const fs = require("fs");
 
@@ -6,30 +6,23 @@ async function run() {
   const username = "AbhayKTS";
   const token = process.env.GITHUB_TOKEN;
 
-  // Get contribution years, repos, and commit counts from all repos
+  // Get contribution years and repos (both public and private)
   const initQuery = `
     query {
       user(login: "${username}") {
         contributionsCollection {
           contributionYears
-          contributionCalendar {
-            totalContributions
-          }
+          totalCommitContributions
+          totalPullRequestContributions
+          totalIssueContributions
+          restrictedContributionsCount
         }
-        repositories(first: 100, privacy: PUBLIC, ownerAffiliations: OWNER) {
+        repositories(first: 100, ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER]) {
           totalCount
           nodes {
             name
+            isPrivate
             stargazerCount
-            defaultBranchRef {
-              target {
-                ... on Commit {
-                  history {
-                    totalCount
-                  }
-                }
-              }
-            }
           }
         }
       }
@@ -44,21 +37,14 @@ async function run() {
 
   const user = initRes.data.data.user;
   const years = user.contributionsCollection.contributionYears;
-  const totalRepos = user.repositories.totalCount;
-  
+  const publicRepos = user.repositories.nodes.filter(r => !r.isPrivate).length;
+
   // Calculate total stars from all repos
   const totalStars = user.repositories.nodes.reduce((sum, repo) => sum + repo.stargazerCount, 0);
-  
-  // Calculate total commits from all repos (actual commit count)
-  let totalCommitsFromRepos = 0;
-  for (const repo of user.repositories.nodes) {
-    if (repo.defaultBranchRef && repo.defaultBranchRef.target && repo.defaultBranchRef.target.history) {
-      totalCommitsFromRepos += repo.defaultBranchRef.target.history.totalCount;
-    }
-  }
 
   // Fetch ALL years for lifetime contribution totals
   let totalContributionsAllTime = 0;
+  let totalCommitsAllTime = 0;
   let totalPRsAllTime = 0;
   let totalIssuesAllTime = 0;
 
@@ -78,8 +64,10 @@ async function run() {
             contributionCalendar {
               totalContributions
             }
+            totalCommitContributions
             totalPullRequestContributions
             totalIssueContributions
+            restrictedContributionsCount
           }
         }
       }
@@ -93,11 +81,12 @@ async function run() {
 
     const cc = yearRes.data.data.user.contributionsCollection;
     totalContributionsAllTime += cc.contributionCalendar.totalContributions;
+    totalCommitsAllTime += cc.totalCommitContributions;
     totalPRsAllTime += cc.totalPullRequestContributions;
     totalIssuesAllTime += cc.totalIssueContributions;
   }
 
-  // Canvas Drawing - NO POWER LEVEL
+  // Canvas Drawing
   const width = 900;
   const height = 420;
   const canvas = createCanvas(width, height);
@@ -133,11 +122,11 @@ async function run() {
 
   const stats = [
     { label: "Total Contributions:", value: totalContributionsAllTime },
-    { label: "Total Commits:", value: totalCommitsFromRepos },
+    { label: "Total Commits:", value: totalCommitsAllTime },
     { label: "Pull Requests:", value: totalPRsAllTime },
     { label: "Issues Opened:", value: totalIssuesAllTime },
     { label: "Stars Received:", value: totalStars },
-    { label: "Public Repositories:", value: totalRepos },
+    { label: "Public Repositories:", value: publicRepos },
   ];
 
   stats.forEach((stat, i) => {
@@ -153,9 +142,9 @@ async function run() {
   fs.writeFileSync("stats.png", canvas.toBuffer("image/png"));
   console.log("stats.png generated!");
   console.log("Total Contributions:", totalContributionsAllTime);
-  console.log("Total Commits (from repos):", totalCommitsFromRepos);
+  console.log("Total Commits:", totalCommitsAllTime);
   console.log("Stars:", totalStars);
-  console.log("Repos:", totalRepos);
+  console.log("Public Repos:", publicRepos);
 }
 
 run().catch(err => {
