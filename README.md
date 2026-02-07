@@ -58,8 +58,6 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 
 ---
 
----
-
 # 🩸 **Contribution Graph – Bloodline of Code**
 <p align="center">
   <img src="https://streak-stats.demolab.com?user=AbhayKTS&theme=dark&hide_border=true&fire=FF2E2E&ring=FF2E2E&currStreakLabel=FF2E2E" />
@@ -67,7 +65,6 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 
 ---
 
----
 
 
 # 🐍 **Snake of the Abyss Devouring Your Code Path**
