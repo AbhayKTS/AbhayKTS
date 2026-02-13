@@ -19,7 +19,6 @@ I carve my path through the digital realms — blade in one hand, code in the ot
 
 ---
 
-
 # 🔥 **Skills of the Dragon Knight**
 
 ### **Languages**
