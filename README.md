@@ -5,6 +5,13 @@
 
 ---
 
+<!-- TERMINAL BANNER -->
+<p align="center">
+  <img src="https://github-readme-terminal.vercel.app/api?username=AbhayKTS" />
+</p>
+
+---
+
 # 👨‍💻 About Me
 
 Computer Science undergraduate (AI & ML) passionate about **AI-driven cybersecurity, intelligent systems, and blockchain technologies**.
