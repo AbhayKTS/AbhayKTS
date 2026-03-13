@@ -5,6 +5,12 @@
 
 ---
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/the%20dragon.png" width="1000"/>
+</p>
+
+---
+
 # 👨‍💻 About Me
 
 Computer Science undergraduate (AI & ML) passionate about **AI-driven cybersecurity, intelligent systems, and blockchain technologies**.
