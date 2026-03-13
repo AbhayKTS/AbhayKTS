@@ -88,3 +88,4 @@ Currently exploring:
 
 Building intelligent systems at the intersection of  
 **AI, cybersecurity, and blockchain.**
+**CHAOS-IMMORTAL**
