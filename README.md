@@ -1,69 +1,96 @@
-﻿<!-- CHAOS IMMORTAL – DARK KING MODE HEADER -->
+<!-- HEADER -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?size=40&duration=3500&pause=700&color=FF2E2E&center=true&vCenter=true&width=900&lines=%E2%9A%94%EF%B8%8F+CHAOS_IMMORTAL+%E2%9A%94%EF%B8%8F;Abhay+Kumar;Dragon+Knight+of+Code;Born+from+Chaos+%7C+Forged+in+Logic;Walking+Between+Magic+and+Machines" />
-
-<!-- DARK KING MODE CUSTOM BANNER (Dragon Eyes + World Tree + Sword) -->
-<p align="center">
-  <img src="https://raw.githubusercontent.com/AbhayKTS/AbhayKTS/main/chaos-dark-king-banner.png" width="1000">
+  <img src="https://readme-typing-svg.herokuapp.com?size=38&duration=3500&pause=700&color=0AFFEF&center=true&vCenter=true&width=900&lines=Abhay+Kumar;AI+%C3%97+Cybersecurity+%C3%97+Blockchain;Building+Intelligent+Security+Systems;Exploring+ML-driven+Vulnerability+Discovery" />
 </p>
 
 ---
 
-# 🩸 **The Chaos Immortal**
-*A dragon knight learning and evolving every day, breaking limits beyond imagination.*
+# 👨‍💻 About Me
 
-Forged in the void where **ancient runes meet modern algorithms**,
-I walk between **magic and machines**, mastering both as weapons.
-Guided by the **Dragon of Evolution**, protected by the **World Tree of Eternity**,
-I carve my path through the digital realms — blade in one hand, code in the other.
+Computer Science undergraduate (AI & ML) passionate about **AI-driven cybersecurity, intelligent systems, and blockchain technologies**.
+
+I enjoy building systems that combine **machine learning, software security, and distributed technologies**.
+
+Currently exploring:
+
+- Machine learning based vulnerability discovery  
+- AI-assisted fuzzing inspired by the **RACING framework**  
+- Smart contract and blockchain security  
+- Data-driven intelligent systems  
 
 ---
 
-# 🔥 **Skills of the Dragon Knight**
+# 🔬 Research Interests
 
-### **Languages**
+- **AI-driven vulnerability discovery**
+- **Reinforcement learning for software testing**
+- **Smart contract security** 
+- **AI / Machine Learning**
+- **Blockchain & Web3**
+- **Cybersecurity**
+
+---
+
+
+# ⚔️ Technical Skills
+
+### Languages
 ![Java](https://img.shields.io/badge/Java-ED1D25?style=for-the-badge&logo=java&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=black)
-![AI/ML](https://img.shields.io/badge/AI%2FML-8A2BE2?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000)
 ![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
 
-### **Frontend Arts**
+---
+
+### AI / ML
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![AI/ML](https://img.shields.io/badge/AI%2FML-8A2BE2?style=for-the-badge&logo=tensorflow&logoColor=white)
+
+---
+
+### Frontend
 ![React](https://img.shields.io/badge/React-0AFFFF?style=for-the-badge&logo=react&logoColor=black)
 ![NextJS](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![HTML](https://img.shields.io/badge/HTML-E44D26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-### **Backend & Databases**
+---
+
+### Backend & Databases
 ![NodeJS](https://img.shields.io/badge/Node.js-3C873A?style=for-the-badge&logo=node.js&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-001F59?style=for-the-badge&logo=mysql&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-31648C?style=for-the-badge&logo=postgresql&logoColor=white)
 
-### **Tools of War**
-![Git](https://img.shields.io/badge/Git-F1502F?style=for-the-badge&logo=git&logoColor=white)
-![VSCode](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-A259FF?style=for-the-badge&logo=figma&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-0db7ed?style=for-the-badge&logo=docker&logoColor=white)
-![Azure](https://img.shields.io/badge/Azure-008AD7?style=for-the-badge&logo=microsoftazure&logoColor=white)
+---
 
-### **Domains of Mastery**
-![AI/ML](https://img.shields.io/badge/AI%2FML-7E22CE?style=for-the-badge&logo=opencv&logoColor=white)
-![UI/UX](https://img.shields.io/badge/UI%2FUX-FF61F6?style=for-the-badge&logo=figma&logoColor=white)
-![DESIGN](https://img.shields.io/badge/Design-22D3EE?style=for-the-badge&logo=adobephotoshop&logoColor=white)
-![Learning](https://img.shields.io/badge/Always%20Learning-16A34A?style=for-the-badge&logo=bookstack&logoColor=white)
+### Systems & DevOps
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Docker](https://img.shields.io/badge/Docker-0db7ed?style=for-the-badge&logo=docker&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F1502F?style=for-the-badge&logo=git&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-008AD7?style=for-the-badge&logo=microsoftazure&logoColor=white)
 
 ---
 
-# 🐍 **Snake of the Abyss Devouring Your Code Path**
+### Blockchain
+![Solidity](https://img.shields.io/badge/Solidity-363636?style=for-the-badge&logo=solidity&logoColor=white)
+
+---
+
+# 🐍 GitHub Contribution Activity
+
 ![snake gif](https://github.com/AbhayKTS/AbhayKTS/blob/output/github-contribution-grid-snake-dark.svg)
 
 ---
 
+# 📊 GitHub Stats
 
-# 👑 **Farewell Message**
-<p align="center">
-  <i>"Power rises in silence. Growth blooms in darkness."</i><br>
-  <b>— The Chaos Immortal</b>
-</p>
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=AbhayKTS&show_icons=true&theme=tokyonight)
+
+---
+
+# 👑 Final Note
+
+Building intelligent systems at the intersection of  
+**AI, cybersecurity, and blockchain.**
