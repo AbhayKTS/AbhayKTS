@@ -84,12 +84,6 @@ Currently exploring:
 
 ---
 
-# 📊 GitHub Stats
-
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=AbhayKTS&show_icons=true&theme=tokyonight)
-
----
-
 # 👑 Final Note
 
 Building intelligent systems at the intersection of  
